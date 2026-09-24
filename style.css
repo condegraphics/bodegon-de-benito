@@ -28,10 +28,18 @@ a { color: inherit; }
 .header-inner { min-height: 78px; display: flex; align-items: center; gap: 2rem; }
 .brand { display: inline-flex; align-items: center; width: 72px; flex: 0 0 72px; }
 .brand img { width: 72px; height: 72px; object-fit: contain; }
-.main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(1.25rem, 3vw, 2.5rem); margin-left: auto; }
-.main-nav a, .footer-links a { text-decoration: none; font-size: .9rem; font-weight: 650; }
+.main-nav { display: flex; align-items: center; justify-content: center; gap: clamp(1rem, 2vw, 2rem); margin-left: auto; }
+.main-nav a, .footer-links a, .nav-dropdown summary { text-decoration: none; font-size: .9rem; font-weight: 650; }
 .main-nav a { color: #45413e; }
-.main-nav a:hover, .main-nav a:focus-visible, .footer-links a:hover, .footer-links a:focus-visible { color: var(--wine); }
+.main-nav a:hover, .main-nav a:focus-visible, .footer-links a:hover, .footer-links a:focus-visible, .nav-dropdown summary:hover { color: var(--wine); }
+.nav-dropdown { position: relative; }
+.nav-dropdown summary { display: inline-flex; align-items: center; gap: .35rem; color: #45413e; cursor: pointer; list-style: none; }
+.nav-dropdown summary::-webkit-details-marker { display: none; }
+.nav-dropdown summary span { color: var(--wine); font-size: 1rem; line-height: 1; transition: transform .2s ease; }
+.nav-dropdown[open] summary span { transform: rotate(180deg); }
+.dropdown-menu { position: absolute; top: calc(100% + 1rem); left: 50%; display: grid; min-width: 220px; padding: .5rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-soft); transform: translateX(-50%); }
+.dropdown-menu a { padding: .7rem .8rem; border-radius: 8px; white-space: nowrap; }
+.dropdown-menu a:hover, .dropdown-menu a:focus-visible { color: var(--wine); background: var(--soft); }
 
 .button { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 48px; padding: .82rem 1.5rem; border: 1.5px solid transparent; border-radius: 9999px; font-size: .92rem; font-weight: 750; line-height: 1.2; text-decoration: none; transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease; }
 .button:hover { transform: translateY(-2px); }
@@ -169,7 +177,9 @@ h3 { margin-bottom: .5rem; font-size: 1.18rem; line-height: 1.25; }
   .site-header { position: static; }
   .header-inner { min-height: auto; flex-wrap: wrap; gap: .75rem 1rem; padding: .65rem 0; }
   .brand, .brand img { width: 58px; height: 58px; }
-  .main-nav { order: 3; width: 100%; justify-content: space-between; padding: .5rem 0 .25rem; border-top: 1px solid var(--line); }
+  .main-nav { order: 3; width: 100%; justify-content: space-between; gap: .55rem; padding: .5rem 0 .25rem; border-top: 1px solid var(--line); }
+  .main-nav a, .footer-links a, .nav-dropdown summary { font-size: .73rem; }
+  .dropdown-menu { position: fixed; top: 126px; left: 1rem; right: 1rem; min-width: 0; transform: none; }
   .header-cta { margin-left: auto; min-height: 42px; padding: .65rem 1rem; }
   .hero { min-height: 620px; padding: 4.5rem 0; background-position: 58% center; }
   .hero-grid, .intro-grid, .contact-grid { grid-template-columns: 1fr; }
