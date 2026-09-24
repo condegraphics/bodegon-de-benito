@@ -56,11 +56,10 @@
           </div>
         </details>
         <a href="https://menu.tucan.la/ElBodegondeBenitoNazar" target="_blank" rel="noopener noreferrer">Delivery</a>
-        <a href="https://www.apparta.co/el-bodegon-de-benito-nazar/reservas" target="_blank" rel="noopener noreferrer">Reservas Online</a>
         <a href="#galeria">Galería</a>
         <a href="#contacto">Contacto</a>
       </nav>
-      <a class="button button-primary header-cta" href="https://wa.me/5491171031111?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20El%20Bodeg%C3%B3n%20de%20Benito." target="_blank" rel="noopener noreferrer">Reservar</a>
+      <a class="button button-primary header-cta" href="https://www.apparta.co/el-bodegon-de-benito-nazar/reservas/" target="_blank" rel="noopener noreferrer">Reservas Online</a>
     </div>
   </header>
 
@@ -309,5 +308,25 @@
     </div>
   </footer>
   <a class="whatsapp-float" href="https://wa.me/5491171031111?text=Hola%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" aria-label="Contactar a El Bodegón de Benito por WhatsApp">WA</a>
+  <script>
+    document.addEventListener('click', function (event) {
+      document.querySelectorAll('.nav-dropdown[open]').forEach(function (menu) {
+        if (!menu.contains(event.target)) menu.removeAttribute('open');
+      });
+    });
+    document.querySelectorAll('.dropdown-menu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        this.closest('.nav-dropdown').removeAttribute('open');
+      });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        document.querySelectorAll('.nav-dropdown[open]').forEach(function (menu) {
+          menu.removeAttribute('open');
+          menu.querySelector('summary').focus();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
