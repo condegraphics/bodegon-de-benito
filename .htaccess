@@ -1,0 +1,14 @@
+# Sitio estático: usar index.html como documento principal.
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Mantener disponibles archivos y directorios reales, como CSS, imágenes y PDFs.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Enviar las rutas no existentes al front controller estático.
+  RewriteRule ^ index.html [L]
+</IfModule>
