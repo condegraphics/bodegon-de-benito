@@ -1,14 +1,15 @@
 # Sitio estático: usar index.html como documento principal.
 DirectoryIndex index.html
+ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # URL antigua: redirección permanente a la nueva home.
+  RewriteRule ^contacto/?$ / [R=301,L,NE]
 
   # Mantener disponibles archivos y directorios reales, como CSS, imágenes y PDFs.
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
-
-  # Enviar las rutas no existentes al front controller estático.
-  RewriteRule ^ index.html [L]
 </IfModule>
